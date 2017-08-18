@@ -3,7 +3,7 @@ Version:	5.2.1
 Release:	1%{?dist}
 Summary:	The Potassco ASP suite executable, built from the Github repository
 
-License:	GPLv3
+License:	MIT
 URL:		http://potassco.org
 Source0:    https://github.com/potassco/clingo/archive/v%{version}.tar.gz
 
