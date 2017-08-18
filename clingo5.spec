@@ -1,6 +1,6 @@
 Name:		clingo5
 Version:	5.2.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	The Potassco ASP suite executable, built from the Github repository
 
 License:	MIT
@@ -66,6 +66,9 @@ install -p -m 644 libclingo/clingo.h %{buildroot}/%{_includedir}
 %{_includedir}/clingo.h
 
 %changelog
+* Tue Aug 18 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-2
+- Fix changed license
+
 * Tue Aug 18 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-1
 - Update to clingo version 5.2.1
 
