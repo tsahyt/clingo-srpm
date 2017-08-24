@@ -1,11 +1,11 @@
-Name:		clingo5
-Version:	5.2.1
-Release:	2%{?dist}
-Summary:	The Potassco ASP suite executable, built from the Github repository
+Name:    clingo5
+Version: 5.2.1
+Release: 2%{?dist}
+Summary: The Potassco ASP suite executable, built from the Github repository
 
-License:	MIT
-URL:		http://potassco.org
-Source0:    https://github.com/potassco/clingo/archive/v%{version}.tar.gz
+License: MIT
+URL:     http://potassco.org
+Source0: https://github.com/potassco/clingo/archive/v%{version}.tar.gz
 
 BuildRequires: cmake, re2c, bison, python2-devel, python3-devel, lua-devel
 
@@ -41,11 +41,16 @@ Summary:    Potassco clingo python binding.
 %description -n python3-clingo5
 Python 3 bindings for the clingo C library.
 
+%package -n lua-clingo5
+Summary:    Potassco clingo lua binding.
+%description -n lua-clingo5
+Lua bindings for the clingo C library.
+
 %prep
 %autosetup -n clingo-%{version}
 
 %build
-cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=%{__python3} -DCLINGO_MANAGE_RPATH=Off -DCMAKE_INSTALL_PREFIX=%{_prefix} -DPYCLINGO_USER_INSTALL=Off -DCLASP_BUILD_APP=Off
+cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=%{__python3} -DCLINGO_MANAGE_RPATH=Off -DCMAKE_INSTALL_PREFIX=%{_prefix} -DPYCLINGO_USER_INSTALL=Off -DCLASP_BUILD_APP=Off -DLUACLINGO_INSTALL_DIR=%{lua_libdir}
 cmake -H. -Bpython2 -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=%{__python2} -DCLINGO_MANAGE_RPATH=Off -DCMAKE_INSTALL_PREFIX=%{_prefix} -DPYCLINGO_USER_INSTALL=Off
 cmake --build release -- -j8
 cmake --build python2 --target pyclingo -- -j8
@@ -74,6 +79,9 @@ test `basename %{_libdir}` = lib || mv %{buildroot}/%{_prefix}/lib/* %{buildroot
 
 %files -n python3-clingo5
 %{python3_sitearch}/clingo.*
+
+%files -n lua-clingo5
+%{lua_libdir}/clingo.*
 
 %changelog
 * Tue Aug 22 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-1
