@@ -1,6 +1,6 @@
 Name:    clingo5
 Version: 5.2.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: The Potassco ASP suite executable, built from the Github repository
 
 License: MIT
@@ -21,28 +21,28 @@ offers more control over the grounding and solving process than gringo and
 clasp can offer individually.
 
 %package lib
-Summary:    Potassco clingo library.
+Summary: Potassco clingo library.
 %description lib
 Clingo library for use of the solver outside of standalone applications
 
 %package lib-devel
-Summary:    Potassco clingo library.
-Requires:   %{name}-lib = %{version}-%{release}
+Summary: Potassco clingo library.
+Requires:%{name}-lib = %{version}-%{release}
 %description lib-devel
 Clingo library for use of the solver outside of standalone applications
 
 %package -n python2-clingo5
-Summary:    Potassco clingo python binding.
+Summary: Potassco clingo python binding.
 %description -n python2-clingo5
 Python 2 bindings for the clingo C library.
 
 %package -n python3-clingo5
-Summary:    Potassco clingo python binding.
+Summary: Potassco clingo python binding.
 %description -n python3-clingo5
 Python 3 bindings for the clingo C library.
 
 %package -n lua-clingo5
-Summary:    Potassco clingo lua binding.
+Summary: Potassco clingo lua binding.
 %description -n lua-clingo5
 Lua bindings for the clingo C library.
 
@@ -84,7 +84,10 @@ test `basename %{_libdir}` = lib || mv %{buildroot}/%{_prefix}/lib/* %{buildroot
 %{lua_libdir}/clingo.*
 
 %changelog
-* Tue Aug 22 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-1
+* Tue Aug 24 2017 Roland Kaminski <kaminski@cs.uni-potsdam.de> 5.2.1-3
+- Add Lua package
+
+* Tue Aug 22 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-2
 - Changes submitted by Roland Kaminski
 - Lua/Python packages
 - Removed lpconvert
