@@ -1,6 +1,6 @@
 Name:    clingo5
-Version: 5.2.1
-Release: 3%{?dist}
+Version: 5.2.2
+Release: 1%{?dist}
 Summary: The Potassco ASP suite executable, built from the Github repository
 
 License: MIT
@@ -46,6 +46,8 @@ Summary: Potassco clingo lua binding.
 %description -n lua-clingo5
 Lua bindings for the clingo C library.
 
+%global debug_package %{nil}
+
 %prep
 %autosetup -n clingo-%{version}
 
@@ -58,8 +60,6 @@ cmake --build python2 --target pyclingo -- -j8
 %install
 make -Crelease DESTDIR=%{buildroot} install
 make -Cpython2/app/pyclingo DESTDIR=%{buildroot} install
-# NOTE: should the cmake configuration be made more flexible here?
-test `basename %{_libdir}` = lib || mv %{buildroot}/%{_prefix}/lib/* %{buildroot}/%{_libdir}/
 
 %files
 %{_bindir}/clingo
@@ -84,7 +84,10 @@ test `basename %{_libdir}` = lib || mv %{buildroot}/%{_prefix}/lib/* %{buildroot
 %{lua_libdir}/clingo.*
 
 %changelog
-* Tue Aug 24 2017 Roland Kaminski <kaminski@cs.uni-potsdam.de> 5.2.1-3
+* Tue Jun 26 2018 Paul Ogris <paul.ogris@aau.at> 5.2.2-1
+- Update to clingo version 5.2.2
+
+* Thu Aug 24 2017 Roland Kaminski <kaminski@cs.uni-potsdam.de> 5.2.1-3
 - Add Lua package
 
 * Tue Aug 22 2017 Paul Ogris <pogris@edu.aau.at> 5.2.1-2
