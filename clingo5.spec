@@ -1,5 +1,5 @@
 Name:    clingo5
-Version: 5.2.2
+Version: 5.3.0
 Release: 1%{?dist}
 Summary: The Potassco ASP suite executable, built from the Github repository
 
@@ -84,6 +84,9 @@ make -Cpython2/app/pyclingo DESTDIR=%{buildroot} install
 %{lua_libdir}/clingo.*
 
 %changelog
+* Thu Jun 28 2018 Paul Ogris <paul.ogris@aau.at> 5.3.0-1
+- Update to clingo version 5.3.0
+
 * Tue Jun 26 2018 Paul Ogris <paul.ogris@aau.at> 5.2.2-1
 - Update to clingo version 5.2.2
 
